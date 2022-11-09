@@ -16,3 +16,9 @@ jobs:
 
           echo "MODEL METRICS"
           cat metrics.txt
+          
+          echo "## Data viz" >> report.md
+          cml-publish resultado.png --md >> report.md
+          cml-publish residuos.png --md >> report.md
+
+          cml-send-comment report.md

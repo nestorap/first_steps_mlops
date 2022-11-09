@@ -84,7 +84,7 @@ sns.scatterplot(x=X.flatten(), y=y.flatten(), color="magenta")
 # Ploteamos la linea
 plt.plot(X_train, coef[0] * X_train + intercept, "b")
 plt.tight_layout()
-plt.savefig("Resultado", dpi=120)
+plt.savefig("resultado.png", dpi=120)
 plt.close()
 
 # Sacamos plot de los residuos
