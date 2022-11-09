@@ -28,7 +28,7 @@ from sklearn.neighbors import NearestNeighbors
 
 import pickle
 
-from preproceso.preproces import read_data
+from preproces import read_data
 
 import logging
 import sys
@@ -68,8 +68,8 @@ test_score = regresion.score(X_test, y_test) * 100
 
 # Guardamos los scores en un txt
 with open("metrics.txt", "w") as outfile:
-    outfile.write("Varianza explicada de train: %2.1f%%\n" train_score)
-    outfile.write("Varianza explicada de test %2.1f%%\n" test_score)
+    outfile.write("Varianza explicada de train: %2.1f%%\n" % train_score)
+    outfile.write("Varianza explicada de test %2.1f%%\n" % test_score)
 
 
 ######### Graficamos #############
@@ -84,13 +84,16 @@ sns.scatterplot(x=X.flatten(), y=y.flatten(), color="magenta")
 # Ploteamos la linea
 plt.plot(X_train, coef[0] * X_train + intercept, "b")
 plt.tight_layout()
-plt.savefig("Resultado", dpi=120)
+plt.savefig("resultado.png", dpi=120)
 plt.close()
 
 # Sacamos plot de los residuos
 y_pred = regresion.predict(X_test) +np.random.normal(0.25, len(y_test))
 y_jitter = y_test + np.random.normal(0, 0.25, len(y_test))
 res_df = pd.DataFrame(list(zip(y_jitter, y_pred)), columns=["True", "Pred"])
+
+axis_fs = 18 # Fontsize
+title_fs = 22 # Fontsize
 
 ax = sns.scatterplot(x="True", y="Pred", data=res_df)
 ax.set_aspect('equal')
