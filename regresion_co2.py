@@ -68,8 +68,8 @@ test_score = regresion.score(X_test, y_test) * 100
 
 # Guardamos los scores en un txt
 with open("metrics.txt", "w") as outfile:
-    outfile.write("Varianza explicada de train: %2.1f%%\n" train_score)
-    outfile.write("Varianza explicada de test %2.1f%%\n" test_score)
+    outfile.write("Varianza explicada de train: %2.1f%%\n" % train_score)
+    outfile.write("Varianza explicada de test %2.1f%%\n" % test_score)
 
 
 ######### Graficamos #############
