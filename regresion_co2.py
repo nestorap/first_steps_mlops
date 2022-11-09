@@ -92,6 +92,9 @@ y_pred = regresion.predict(X_test) +np.random.normal(0.25, len(y_test))
 y_jitter = y_test + np.random.normal(0, 0.25, len(y_test))
 res_df = pd.DataFrame(list(zip(y_jitter, y_pred)), columns=["True", "Pred"])
 
+axis_fs = 18 # Fontsize
+title_fs = 22 # Fontsize
+
 ax = sns.scatterplot(x="True", y="Pred", data=res_df)
 ax.set_aspect('equal')
 ax.set_xlabel('True CO2 emission', fontsize=axis_fs)
