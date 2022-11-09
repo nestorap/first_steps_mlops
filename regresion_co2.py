@@ -60,20 +60,54 @@ logger.info("Entrenamos el modelo")
 regresion = linear_model.LinearRegression()
 regresion.fit(X_train, y_train)
 
+
+# Sacamos el score de train
+train_score = regresion.score(X_train, y_train) * 100
+# Sacamos el score de test
+test_score = regresion.score(X_test, y_test) * 100
+
+# Guardamos los scores en un txt
+with open("metrics.txt", "w") as outfile:
+    outfile.write("Varianza explicada de train: %2.1f%%\n" train_score)
+    outfile.write("Varianza explicada de test %2.1f%%\n" test_score)
+
+
+######### Graficamos #############
+
 # Sacamos los coeficientes del modelo para plotear la linea que nos arroja la regresion lineal
 coef = regresion.coef_
 intercept = regresion.intercept_
 
-# Sacamos un plot de los datos y d ela linea
+# Sacamos un plot de los datos y de la linea
 logger.info("ploteamos los datos y el resultado")
 sns.scatterplot(x=X.flatten(), y=y.flatten(), color="magenta")
 # Ploteamos la linea
 plt.plot(X_train, coef[0] * X_train + intercept, "b")
-plt.show()
+plt.tight_layout()
+plt.savefig("Resultado", dpi=120)
+plt.close()
+
+# Sacamos plot de los residuos
+y_pred = regresion.predict(X_test) +np.random.normal(0.25, len(y_test))
+y_jitter = y_test + np.random.normal(0, 0.25, len(y_test))
+res_df = pd.DataFrame(list(zip(y_jitter, y_pred)), columns=["True", "Pred"])
+
+ax = sns.scatterplot(x="True", y="Pred", data=res_df)
+ax.set_aspect('equal')
+ax.set_xlabel('True CO2 emission', fontsize=axis_fs)
+ax.set_ylabel('Prediccion CO2 emission', fontsize=axis_fs)
+ax.set_title('Residuals', fontsize=title_fs)
+
+ax.plot([1, 10], [1, 10], 'black', linewidth=1)
+plt.ylim((2.5, 8.5))
+plt.xlim((2.5, 8.5))
+
+plt.tight_layout()
+plt.savefig("residuos.png", dpi=120)
 
 # Guardamos el modelo
-logger.info("Guardamos el modelo")
-pickle.dump(regresion, open("first_model", "wb"))
+#logger.info("Guardamos el modelo")
+#pickle.dump(regresion, open("first_model", "wb"))
 
 
 
