@@ -28,7 +28,7 @@ from sklearn.neighbors import NearestNeighbors
 
 import pickle
 
-from preproceso.preproces import read_data
+from preproces import read_data
 
 import logging
 import sys
