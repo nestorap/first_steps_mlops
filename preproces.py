@@ -13,7 +13,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 def read_data():
-    df = pd.read_csv('/data/coches.csv')
+    df = pd.read_csv('data/coches.csv')
     return df
 
 def seleccion_columnas(df):

@@ -1,0 +1,2 @@
+Varianza explicada de train: 74.5%
+Varianza explicada de test 73.0%
