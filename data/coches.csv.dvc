@@ -1,0 +1,5 @@
+outs:
+- md5: dad4cdcedf3ed09e1be9e2bbab28aee6
+  size: 72629
+  isexec: true
+  path: coches.csv
