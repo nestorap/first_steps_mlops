@@ -12,6 +12,8 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
+from dvc import api
+from io import StringIO
 
 def read_data():
     data_path = api.read("mlops-firstste-data/da/d4cdcedf3ed09e1be9e2bbab28aee6", remote="myremote")
