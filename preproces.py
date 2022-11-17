@@ -16,7 +16,7 @@ from dvc import api
 from io import StringIO
 
 def read_data():
-    data_path = api.read(path="data/coches.csv", repo="https://github.com/nestorap/first_steps_mlops/tree/data-version-control" remote="myremote")
+    data_path = api.read(path="data/coches.csv", repo="https://github.com/nestorap/first_steps_mlops/tree/data-version-control", remote="myremote")
     df = pd.read_csv(StringIO(data_path))
     return df
 
