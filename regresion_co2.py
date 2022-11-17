@@ -47,6 +47,9 @@ logger = logging.getLogger(__name__)
 logger.info("Cargamos el datast")
 df = read_data()
 
+logger.ingo("mostramos un head del dataset")
+df.head()
+
 # Separamos en X e y
 logger.info("Separamos en X e y")
 X = df.loc[:,'FUELCONSUMPTION_HWY'].values.reshape(-1, 1)
