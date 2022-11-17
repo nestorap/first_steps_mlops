@@ -12,8 +12,13 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
+# Librería de dvc
+from dvc import api # Con esta librería nos traemos la url donde tenemos los datos en drive para leerlos desde el repo
+from io import StringIO
+
 def read_data():
-    df = pd.read_csv('data/coches.csv')
+    data_path = api.read("mlops-firstste-data/da/d4cdcedf3ed09e1be9e2bbab28aee6", remote="myremote")
+    df = pd.read_csv(StringIO(data_path))
     return df
 
 def seleccion_columnas(df):
