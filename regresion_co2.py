@@ -47,7 +47,7 @@ logger = logging.getLogger(__name__)
 logger.info("Cargamos el datast")
 df = read_data()
 
-logger.ingo("mostramos un head del dataset")
+logger.info("mostramos un head del dataset")
 df.head()
 
 # Separamos en X e y
