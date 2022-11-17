@@ -16,7 +16,7 @@ from dvc import api
 from io import StringIO
 
 def read_data():
-    data_path = api.read("coches.csv", remote="myremote")
+    data_path = api.read("Mi unidad/mlops-friststep-data/da/d4cdcedf3ed09e1be9e2bbab28aee6", remote="myremote")
     df = pd.read_csv(StringIO(data_path))
     return df
 
