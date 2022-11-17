@@ -48,7 +48,7 @@ logger.info("Cargamos el datast")
 df = read_data()
 
 logger.info("mostramos un head del dataset")
-df.head()
+print(df.head())
 
 # Separamos en X e y
 logger.info("Separamos en X e y")
