@@ -16,8 +16,13 @@ from dvc import api
 from io import StringIO
 
 def read_data():
-    data_path = api.read(path="data/coches.csv", repo="https://github.com/nestorap/first_steps_mlops/data-version-control", remote="myremote")
-    df = pd.read_csv(StringIO(data_path))
+    data = dvc.api.read(
+        'data/coches.csv',
+        repo='https://github.com/nestorap/first_steps_mlops',
+        rev='data-version-control',
+        remote='myremote'
+    )
+    df = pd.read_csv(data)
     return df
 
 def seleccion_columnas(df):
