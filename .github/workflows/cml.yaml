@@ -9,6 +9,7 @@ jobs:
       - name: cml_run
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          drive_token: ${{ secrets.DRIVE_SECRET }}
         run: |
 
           /usr/bin/python3 -m pip install --upgrade pip
