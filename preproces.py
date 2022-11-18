@@ -16,7 +16,7 @@ from dvc import api
 from io import StringIO
 
 def read_data():
-    data = dvc.api.read(
+    data = api.read(
         'data/coches.csv',
         repo='https://github.com/nestorap/first_steps_mlops',
         rev='data-version-control',
