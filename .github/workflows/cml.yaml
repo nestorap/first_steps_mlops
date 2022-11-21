@@ -12,7 +12,9 @@ jobs:
           drive_token: ${{ secrets.DRIVE_SECRET }}
         run: |
 
-          dvc pull data/coches.csv
+          dvc remote modify myremote gdrive_use_service_account true
+          dvc remote --local drive_token
+
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           python regresion_co2.py
