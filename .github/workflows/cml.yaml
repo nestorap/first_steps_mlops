@@ -6,14 +6,16 @@ jobs:
     container: docker://dvcorg/cml-py3:latest # contenedor de CML
     steps:
       - uses: actions/checkout@v2
+      - uses: iterative/setup-dvc@v1  
       - name: cml_run
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          drive_token: ${{ secrets.DRIVE_SECRET }}
+          drive_token: ${{ secrets.DRIVE_SECRET }}  
+          
         run: |
 
-          dvc remote modify myremote gdrive_use_service_account true
           dvc remote --local drive_token
+          dvc pull
 
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
