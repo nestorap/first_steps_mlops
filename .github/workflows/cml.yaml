@@ -13,7 +13,7 @@ jobs:
           drive_token: ${{ secrets.DRIVE_SECRET }}  
           
         run: |
-          dvc remote modify --local myremote gdrive_user_credentials_file drive_token 
+          dvc remote modify --local myremote  gdrive_service_account_json_file_path drive_token 
           dvc pull
 
           /usr/bin/python3 -m pip install --upgrade pip
