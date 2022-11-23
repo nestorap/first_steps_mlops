@@ -14,12 +14,10 @@ jobs:
           
         run: |
 
-          /usr/bin/python3 -m pip install --upgrade pip
-          pip install virtualenv
-          virtualenv venv
-          source venv/bin/activate
+          /usr/bin/python3 -m pip install --upgrade pip 
           pip install -r requirements.txt
           export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
+          dvc remote modify filterout --local gdrive_user_credentials_file .dvc/tmp/gdrive-user-credentials.json
           dvc pull data/coches.csv.dvc
           python regresion_co2.py
 
