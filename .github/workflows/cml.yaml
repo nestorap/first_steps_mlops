@@ -13,6 +13,7 @@ jobs:
           drive_token: ${{ secrets.DRIVE_SECRET }}  
           
         run: |
+          dvc remote modify --local myremote drive_token
           dvc pull
 
           /usr/bin/python3 -m pip install --upgrade pip
