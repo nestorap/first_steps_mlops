@@ -7,12 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2  
       - name: cml_run
+        
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           drive_token: ${{ secrets.DRIVE_SECRET }}  
           
         run: |
-
+          dvc remote modify --local drive_token
           dvc pull
 
           /usr/bin/python3 -m pip install --upgrade pip
