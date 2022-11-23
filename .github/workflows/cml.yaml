@@ -10,14 +10,14 @@ jobs:
         
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          SERVICE_ACCOUNT_KEY: ${{ secrets.DRIVE_SECRET }}  
+          DRIVE_SECRET: ${{ secrets.DRIVE_SECRET }}  
           
         run: |
 
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
-          dvc pull
+          dvc pull data/coches.csv.dvc
           python regresion_co2.py
 
           echo "## Model metrics" > report.md
