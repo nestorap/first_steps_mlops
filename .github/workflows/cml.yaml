@@ -20,8 +20,8 @@ jobs:
           #source venv/bin/activate
           pip install -r requirements.txt
           #export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
-          json_path=$((python utilities/setter.py) 2> &1)
-          dvc remote modify --local myremote gdrive_service_account_json_file_path json_path
+          #json_path=$((python utilities/setter.py) 2> &1 )
+          dvc remote modify --local myremote gdrive_service_account_json_file_path $((python utilities/setter.py))
           dvc pull data/coches.csv.dvc
           python regresion_co2.py
 
