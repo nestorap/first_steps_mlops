@@ -10,7 +10,7 @@ def main():
     key = str(key)
     with open("path.json", "w") as json_file:
         json_file.write(b64decode(key).decode())
-    print(os.path.realpath(path.json))
+    print(os.path.realpath("path.json"))
 
 if __name__ == "__main__":
     main()
